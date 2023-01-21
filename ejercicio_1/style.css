@@ -1,0 +1,14 @@
+.paises {
+    fill:aquamarine;
+    fill-opacity: 0.8;
+    stroke: aquamarine; 
+    stroke-width: 4px;
+}
+
+text.negrita {
+ stroke-width: 1px;
+ stroke: black;
+ }
+
+
+
