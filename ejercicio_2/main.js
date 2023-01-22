@@ -45,10 +45,10 @@ d3.csv("data.csv").then(data => {
 
 
   //llamada ejes
-  xAxisGroup.call(xAxis).attr("font-size","12").attr("font-weight" , "bold")
-  yAxisGroup.call(yAxis).attr("font-size","12").attr("font-weight" , "bold")
+  xAxisGroup.call(xAxis).attr("font-size", "12").attr("font-weight", "bold")
+  yAxisGroup.call(yAxis).attr("font-size", "12").attr("font-weight", "bold")
 
-  //data binding
+  //data binding parejas
   let elements = elementGroup.selectAll("rect").data(data)
   elements.enter().append("rect")
     .attr("class", "parejas")
@@ -58,21 +58,22 @@ d3.csv("data.csv").then(data => {
     .attr("height", d => height - margin.top - margin.bottom - y(d.age))
 
 
-  
-  let line = d3.line().x(d => x(d.year)).y(d => y(age(d.year)))
+  //data binding ldc
+  let line = d3.line().x(d => x(d.year) + (x.bandwidth() / 2)).y(d => y(age(d.year)))
   elementGroup.datum(data)
     .append("path")
     .attr("id", "line")
     .attr("d", line)
 
 
+
   //data binding tope edad
-  let line1 = d3.line().x(d => x(d.year)).y(d => y(d.age = 25))
+  let line1 = d3.line().x(d => x(d.year) + (x.bandwidth() / 2)).y(d => y(d.age = 25))
   elementGroup.datum(data)
     .append("path")
     .attr("id", "line1")
     .attr("d", line1)
-  
+
   //titulo
   elementGroup.append("text").text("LDC & PAREJAS").attr("x", 300).attr("y", 470).attr("class", "negrita")
 
